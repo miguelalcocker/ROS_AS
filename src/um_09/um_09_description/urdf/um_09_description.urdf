@@ -1,3 +1,6 @@
+<!-- TODO introducir propiedades fisicas, modificar valores constantes 
+https://docs.nav2.org/setup_guides/urdf/setup_urdf.html -->
+
 <?xml version="1.0"?>
 
 <robot name="sam_bot" xmlns:xacro="http://ros.org/wiki/xacro">
@@ -99,5 +102,4 @@
   <!-- Ruedas delanteras (directrices) -->
   <xacro:front_wheel prefix="steerwhl_l" x_reflect="1" y_reflect="1"/>
   <xacro:front_wheel prefix="steerwhl_r" x_reflect="1" y_reflect="-1"/>
-</robot>
 </robot>
