@@ -1,0 +1,13 @@
+planner_server:
+  ros__parameters:
+    expected_planner_frequency: 20.0
+    planner_plugins: ["RRTStarPlanner"]  # Nombre del plugin
+    RRTStarPlanner:
+      plugin: "nav2_rrt_star::RRTStarPlanner"
+      tolerance: 0.5                  # Tolerancia del planificador
+      max_iterations: 1000           # Iteraciones máximas
+      max_time: 2.0                  # Tiempo máximo en segundos para planificar
+      allow_unknown: false           # Permitir áreas desconocidas en el mapa
+      goal_bias: 0.05                # Peso hacia el objetivo
+      rrt_star_radius: 1.0           # Radio para el árbol de conexiones
+      obstacle_check_resolution: 0.1 # Resolución para verificar obstáculos
