@@ -1,4 +1,7 @@
 import launch
+from launch import LaunchDescription
+from launch_ros.actions import Node
+from ament_index_python.packages import get_package_share_directory
 from launch.substitutions import Command, LaunchConfiguration
 import launch_ros
 import os
@@ -33,6 +36,18 @@ def generate_launch_description():
         output='screen',
         arguments=['-d', LaunchConfiguration('rvizconfig')],
     )
+    planner_server_node = launch_ros.actions.Node(
+        package='nav2_planner',  # Paquete que contiene el servidor del planificador
+        executable='planner_server',
+        name='planner_server',
+        output='screen',
+        parameters=[
+            os.path.join(
+                get_package_share_directory('um_09_description'),
+                'planner_server.yaml'
+            )
+        ]
+    )
 
     return launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(name='gui', default_value='True',
@@ -45,4 +60,5 @@ def generate_launch_description():
         joint_state_publisher_gui_node,
         robot_state_publisher_node,
         rviz_node
+        planner_server_node
     ])
